@@ -1,0 +1,291 @@
+@import "tailwindcss";
+
+/* Custom dark mode variant untuk toggle manual */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tema: Warna Hijau & Biru dengan Token Semantik Neumorphism */
+@theme {
+  /* Palet Hijau (Primary) */
+  --color-primary-50: oklch(0.97 0.02 150);
+  --color-primary-100: oklch(0.93 0.04 150);
+  --color-primary-200: oklch(0.87 0.07 150);
+  --color-primary-300: oklch(0.78 0.11 150);
+  --color-primary-400: oklch(0.68 0.15 150);
+  --color-primary-500: oklch(0.58 0.18 150);
+  --color-primary-600: oklch(0.48 0.16 150);
+  --color-primary-700: oklch(0.38 0.13 150);
+  --color-primary-800: oklch(0.28 0.09 150);
+  --color-primary-900: oklch(0.18 0.05 150);
+
+  /* Palet Biru (Accent/Secondary) */
+  --color-accent-50: oklch(0.97 0.02 250);
+  --color-accent-100: oklch(0.93 0.04 250);
+  --color-accent-200: oklch(0.87 0.07 250);
+  --color-accent-300: oklch(0.78 0.11 250);
+  --color-accent-400: oklch(0.68 0.15 250);
+  --color-accent-500: oklch(0.58 0.18 250);
+  --color-accent-600: oklch(0.48 0.16 250);
+  --color-accent-700: oklch(0.38 0.13 250);
+  --color-accent-800: oklch(0.28 0.09 250);
+  --color-accent-900: oklch(0.18 0.05 250);
+
+  /* Token Semantik (Neumorphism Light Mode) */
+  --color-surface: oklch(0.92 0.004 250);
+  --color-surface-raised: oklch(0.95 0.004 250);
+  --color-text-primary: oklch(0.24 0.02 255);
+  --color-text-secondary: oklch(0.44 0.02 255);
+  --color-border: oklch(0.84 0.008 250);
+
+  /* Shadow Neumorphism */
+  --shadow-neu-light: oklch(0.99 0 0);
+  --shadow-neu-dark: oklch(0.80 0.01 250);
+
+  /* Tipografi Khas */
+  --font-sans: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-serif: "Source Serif 4", Georgia, serif;
+  --font-arabic: "Amiri", "Traditional Arabic", serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+/* Mode Gelap: Override Token Semantik */
+.dark {
+  --color-surface: oklch(0.24 0.012 255);
+  --color-surface-raised: oklch(0.28 0.012 255);
+  --color-text-primary: oklch(0.92 0.008 255);
+  --color-text-secondary: oklch(0.70 0.008 255);
+  --color-border: oklch(0.34 0.012 255);
+
+  --shadow-neu-light: oklch(0.31 0.012 255);
+  --shadow-neu-dark: oklch(0.14 0.012 255);
+}
+
+/* Nonaktifkan semua tampilan scrollbar namun tetap menjaga scroll berfungsi */
+html,
+body,
+* {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+/* Custom warna blok teks (text selection highlight) sesuai tema */
+::selection {
+  background-color: var(--color-primary-600);
+  color: #ffffff;
+}
+
+::-moz-selection {
+  background-color: var(--color-primary-600);
+  color: #ffffff;
+}
+
+.dark ::selection {
+  background-color: var(--color-primary-400);
+  color: oklch(0.16 0.02 255);
+}
+
+.dark ::-moz-selection {
+  background-color: var(--color-primary-400);
+  color: oklch(0.16 0.02 255);
+}
+
+/* Base Styles */
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+                color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .dark body {
+    letter-spacing: 0.008em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+}
+
+/* Utility Neumorphism */
+@utility neu-outset {
+  background-color: var(--color-surface);
+  box-shadow: -5px -5px 10px var(--shadow-neu-light),
+               5px  5px 10px var(--shadow-neu-dark);
+  border-radius: 1rem;
+}
+
+@utility neu-outset-sm {
+  background-color: var(--color-surface);
+  box-shadow: -3px -3px 6px var(--shadow-neu-light),
+               3px  3px 6px var(--shadow-neu-dark);
+  border-radius: 0.75rem;
+}
+
+@utility neu-inset {
+  background-color: var(--color-surface);
+  box-shadow: inset -4px -4px 8px var(--shadow-neu-light),
+              inset  4px  4px 8px var(--shadow-neu-dark);
+  border-radius: 1rem;
+}
+
+@utility neu-inset-sm {
+  background-color: var(--color-surface);
+  box-shadow: inset -2px -2px 5px var(--shadow-neu-light),
+              inset  2px  2px 5px var(--shadow-neu-dark);
+  border-radius: 0.75rem;
+}
+
+@utility font-arabic {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  unicode-bidi: isolate;
+}
+
+@utility font-prose {
+  font-family: var(--font-serif);
+}
+
+/* Hilangkan seluruh box-shadow pada semua modal dan elemen di dalamnya */
+[role="dialog"],
+[role="dialog"] *,
+[role="dialog"] .neu-outset,
+[role="dialog"] .neu-outset-sm,
+[role="dialog"] .neu-inset,
+[role="dialog"] .neu-inset-sm {
+  box-shadow: none !important;
+}
+
+[role="dialog"] .neu-outset,
+[role="dialog"] .neu-outset-sm,
+[role="dialog"] .neu-inset,
+[role="dialog"] .neu-inset-sm {
+  border: 1px solid var(--color-border);
+}
+
+/* Styling untuk konten HTML <section> pada deskripsi & isi blog */
+.blog-html-section section {
+  display: block;
+}
+
+.blog-html-article {
+  font-family: var(--font-serif);
+  font-size: 1.03rem;
+  line-height: 1.8;
+  color: var(--color-text-primary);
+}
+
+.blog-html-excerpt {
+  font-family: var(--font-serif);
+  font-size: 0.96rem;
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+
+.blog-html-section h1,
+.blog-html-section h2,
+.blog-html-section h3,
+.blog-html-section h4 {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.blog-html-section h2 {
+  font-size: 1.35rem;
+}
+
+.blog-html-section h3 {
+  font-size: 1.15rem;
+}
+
+.blog-html-section p + p,
+.blog-html-section section > * + * {
+  margin-top: 0.75rem;
+}
+
+.blog-html-section ul,
+.blog-html-section ol {
+  padding-left: 1.35rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-html-section ul {
+  list-style-type: disc;
+}
+
+.blog-html-section ol {
+  list-style-type: decimal;
+}
+
+.blog-html-section li + li {
+  margin-top: 0.35rem;
+}
+
+.blog-html-section blockquote {
+  border-left: 3px solid var(--color-primary-500);
+  padding: 0.65rem 1rem;
+  background-color: var(--color-surface-raised);
+  border-radius: 0.5rem;
+  color: var(--color-text-primary);
+}
+
+.blog-html-section a {
+  color: var(--color-primary-600);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.dark .blog-html-section a {
+  color: var(--color-primary-400);
+}
+
+.blog-html-section code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  padding: 0.12rem 0.35rem;
+  border-radius: 0.35rem;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+}
+
+.blog-html-section hr {
+  border-color: var(--color-border);
+  margin: 1rem 0;
+}
+
+.blog-html-section table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.75rem 0;
+  font-size: 0.92rem;
+}
+
+.blog-html-section th,
+.blog-html-section td {
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="flameOuter" x1="32" y1="6" x2="32" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="55%" stop-color="#ea580c" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    <linearGradient id="flameInner" x1="32" y1="14" x2="32" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#fef08a" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <linearGradient id="robeGrad" x1="20" y1="30" x2="44" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0d9488" />
+      <stop offset="100%" stop-color="#0f766e" />
+    </linearGradient>
+  </defs>
+  <!-- Outer Motivation Flame behind reader -->
+  <path
+    d="M32 5C25 14 14 21 14 35C14 46.5 22 55 32 55C42 55 50 46.5 50 35C50 24.5 44 19 41.5 13.5C40.5 17 38 19 36.5 19.5C37.5 14.5 35.5 9 32 5Z"
+    fill="url(#flameOuter)"
+  />
+  <!-- Inner Bright Flame -->
+  <path
+    d="M32 15C27.5 21 21 26.5 21 36C21 43 26 48.5 32 48.5C38 48.5 43 43 43 36C43 29.5 39 25 36.5 21C35.8 23.5 34.5 24.8 33.5 25C34.2 21.5 33.5 18 32 15Z"
+    fill="url(#flameInner)"
+    opacity="0.88"
+  />
+  <!-- Seated Person Silhouette Reading Al-Quran -->
+  <circle cx="32" cy="25.5" r="4.8" fill="#1e293b" stroke="#f8fafc" stroke-width="1.2" />
+  <!-- Kufi/Cap hint -->
+  <path d="M27.6 24C28.3 21.2 35.7 21.2 36.4 24Z" fill="#0f766e" />
+  <!-- Torso & Arms bent gently toward Quran -->
+  <path
+    d="M22.5 44C22.5 36 26.5 32.5 32 32.5C37.5 32.5 41.5 36 41.5 44L46.5 50.5C47.5 52 46.4 54 44.5 54H19.5C17.6 54 16.5 52 17.5 50.5L22.5 44Z"
+    fill="url(#robeGrad)"
+    stroke="#f8fafc"
+    stroke-width="1.1"
+    stroke-linejoin="round"
+  />
+  <!-- Rehal / Wooden Quran Stand & Open Mushaf -->
+  <path
+    d="M22.5 45.5L32 49L41.5 45.5L39.5 41.5L32 44.2L24.5 41.5L22.5 45.5Z"
+    fill="#fefce8"
+    stroke="#0f172a"
+    stroke-width="1.1"
+    stroke-linejoin="round"
+  />
+  <line x1="32" y1="44.2" x2="32" y2="49" stroke="#0f172a" stroke-width="1" />
+  <path d="M25.5 53.5L32 49.2L38.5 53.5" stroke="#fde68a" stroke-width="1.6" stroke-linecap="round" />
+</svg>
