@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
 import Script from 'next/script';
+import type { ReactNode } from 'react';
 import { AppClientShell } from '../components/layout/AppClientShell';
 import '../index.css';
 
@@ -32,8 +32,6 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=JetBrains+Mono:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap"
           rel="stylesheet"
         />
-      </head>
-      <body>
         <Script
           id="theme-init"
           strategy="beforeInteractive"
@@ -41,6 +39,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             __html: `(function(){try{var s=localStorage.getItem('shahih-sunnah-theme');var d=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(s==='dark'||(!s&&d)){document.documentElement.classList.add('dark');}}catch(e){}})();`,
           }}
         />
+      </head>
+      <body>
         <AppClientShell>{children}</AppClientShell>
       </body>
     </html>
